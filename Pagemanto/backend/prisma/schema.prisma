@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cartao{
+  id String @id @default(uuid())
+  senha String    
+  agencia String
+  codigoSeguraca String
+  valorLimite String
+  valorAtual String
+  criado_em DateTime? @default(now())
+  modificado_em DateTime? @default(now())
+
+  @@map("cartoes")
+}
+
